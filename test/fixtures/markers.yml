@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  marker_type: MyString
+  marker_content: MyText
+  marker_address: MyString
+  start_date: 2015-02-28
+  end_date: 2015-02-28
+
+two:
+  marker_type: MyString
+  marker_content: MyText
+  marker_address: MyString
+  start_date: 2015-02-28
+  end_date: 2015-02-28

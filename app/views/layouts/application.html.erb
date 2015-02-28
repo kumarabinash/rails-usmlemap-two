@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Usmlemap</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="navbar navbar-fluid navbar-dark">
+  <nav>
+    <ul>
+      <li>
+        <a href="#">Left</a>
+      </li>
+    </ul>
+    <ul>
+      <li>
+        <a href="#">Right</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+
+<div class="container">
+	<%= yield %>
+</div>
+
+
+</body>
+</html>
