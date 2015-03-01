@@ -1,0 +1,8 @@
+<div class="header">
+	<h3><%= @user.profile_name %></h3>
+</div>
+<% if @markers %>
+	<% @markers.each do |marker| %>
+		<%= marker.marker_type %><br />
+	<% end %>
+<% end %>

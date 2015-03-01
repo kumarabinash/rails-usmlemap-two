@@ -1,5 +1,5 @@
 Usmlemap::Application.routes.draw do
-  get "profile/show"
+  get "profiles/show"
   devise_for :users
   resources :markers
 
@@ -13,6 +13,8 @@ Usmlemap::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'markers#index'
+
+  get '/:id', to: 'profiles#show'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

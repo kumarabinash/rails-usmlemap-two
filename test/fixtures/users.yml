@@ -4,3 +4,10 @@ kumar:
   profile_name: "abinash"
   email: "abinash.b2@gmail.com"
   encrypted_password: "password"
+
+saswati:
+  first_name: "Saswati"
+  last_name: "Priyadarshini"
+  profile_name: "saswati"
+  email: "saswati.p13@gmail.com"
+  encrypted_password: "password"
