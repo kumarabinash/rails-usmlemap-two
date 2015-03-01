@@ -1,4 +1,5 @@
 Usmlemap::Application.routes.draw do
+  get "profile/show"
   devise_for :users
   resources :markers
 
