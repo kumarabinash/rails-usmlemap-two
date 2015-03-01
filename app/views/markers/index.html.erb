@@ -1,8 +1,9 @@
-<h1>Listing markers</h1>
+<h3>Listing markers</h3>
 
 <table>
   <thead>
     <tr>
+      <th>User</th>
       <th>Marker type</th>
       <th>Marker content</th>
       <th>Marker address</th>
@@ -17,19 +18,19 @@
   <tbody>
     <% @markers.each do |marker| %>
       <tr>
+        <td><%= marker.user.first_name %></td>
         <td><%= marker.marker_type %></td>
         <td><%= marker.marker_content %></td>
         <td><%= marker.marker_address %></td>
         <td><%= marker.start_date %></td>
         <td><%= marker.end_date %></td>
-        <td><%= link_to 'Show', marker %></td>
-        <td><%= link_to 'Edit', edit_marker_path(marker) %></td>
-        <td><%= link_to 'Destroy', marker, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', marker, :class => 'button button-green' %></td>
+        <td><%= link_to 'Edit', edit_marker_path(marker), :class => 'button button-yellow' %></td>
+        <td><%= link_to 'Destroy', marker, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'button button-red' %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
 
-<%= link_to 'New Marker', new_marker_path %>
+<%= link_to 'New Marker', new_marker_path, :class => 'button button-small button-blue' %>
