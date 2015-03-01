@@ -6,6 +6,7 @@ one:
   marker_address: MyString
   start_date: 2015-02-28
   end_date: 2015-02-28
+  user: kumar
 
 two:
   marker_type: MyString
@@ -13,3 +14,4 @@ two:
   marker_address: MyString
   start_date: 2015-02-28
   end_date: 2015-02-28
+  user: kumar

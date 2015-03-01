@@ -17,10 +17,10 @@
     <ul>
     <% if user_signed_in? %>
     	<li><%= link_to current_user.first_name, edit_user_registration_path %></li>
-    	<li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
+    	<li><%= link_to "Logout", logout_path %></li>
     <% else %>
-    	<li><%= link_to "Login", new_user_session_path %></li>
-    	<li><%= link_to "Signup", new_user_registration_path %></li>
+    	<li><%= link_to "Login", login_path %></li>
+    	<li><%= link_to "Signup", register_path %></li>
     <% end %>
     </ul>
   </nav>
@@ -31,8 +31,16 @@
 	<%= yield %>
 
 </div>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<% flash.each do |type, message| %>
+  <script type="text/javascript">
+    k$.status({
+      text: '<%= message %>',
+      delay: 2000,
+      type: '<%= flash_class type %>',
+      id: 'token'
+    });
+  </script>
+<% end %>
 
 
 </body>
