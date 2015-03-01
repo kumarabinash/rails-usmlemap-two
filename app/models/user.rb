@@ -5,4 +5,13 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :markers
+
+  validates :first_name, :last_name, :profile_name, presence: true
+
+  validates :profile_name, uniqueness: true,
+  							format: {
+  								with: /a-zA-Z0-9_-/,
+  								message: "Must be formatted correctly."
+  							}
+
 end
