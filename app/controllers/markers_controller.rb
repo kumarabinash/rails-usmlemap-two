@@ -55,6 +55,9 @@ class MarkersController < ApplicationController
         format.json { render json: @marker.errors, status: :unprocessable_entity }
       end
     end
+
+    rescue ActiveRecord::RecordNotFound
+      render file: 'public/404', status: :not_found
   end
 
   # DELETE /markers/1

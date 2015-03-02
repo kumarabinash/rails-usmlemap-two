@@ -18,7 +18,7 @@
   <tbody>
     <% @markers.each do |marker| %>
       <tr>
-        <td><%= marker.user.first_name %></td>
+        <td><%= link_to marker.user.first_name, profile_path(marker.user) %></td>
         <td><%= marker.marker_type %></td>
         <td><%= marker.marker_content %></td>
         <td><%= marker.marker_address %></td>

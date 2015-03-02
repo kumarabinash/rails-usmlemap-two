@@ -17,4 +17,7 @@ class User < ActiveRecord::Base
                   multiline: true
   							}
 
+  def to_param
+    profile_name
+  end
 end

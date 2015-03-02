@@ -1,5 +1,6 @@
 <div class="header">
 	<h3><%= @user.profile_name %></h3>
+	<%= link_to "Add Friend", new_user_friendship_path(friend_id: @user) %>
 </div>
 <% if @markers %>
 	<% @markers.each do |marker| %>
