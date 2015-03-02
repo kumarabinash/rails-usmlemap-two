@@ -11,3 +11,10 @@ saswati:
   profile_name: "saswati"
   email: "saswati.p13@gmail.com"
   encrypted_password: "password"
+
+rajesh:
+  first_name: "Rajesh"
+  last_name: "Patra"
+  profile_name: "rajesh"
+  email: "p7.rajesh@gmail.com"
+  encrypted_password: "password"
