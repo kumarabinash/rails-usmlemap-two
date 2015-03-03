@@ -106,9 +106,6 @@ class UserFriendshipsControllerTest < ActionController::TestCase
 
 	  		should "create a friendship" do
 	  			assert users(:kumar).friends.include?(users(:saswati))
-	  			assert_difference 'UserFriendship.count' do
-	  				
-	  			end
 	  		end
 
 

@@ -11,6 +11,8 @@ gem 'sass-rails', '~> 4.0.0'
 #Devise user login system
 gem 'devise'
 
+gem 'state_machine'
+
 
 group :test do
 	gem 'shoulda'
