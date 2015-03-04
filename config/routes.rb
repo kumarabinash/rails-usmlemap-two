@@ -12,7 +12,11 @@ Usmlemap::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
 
-  resources :user_friendships
+  resources :user_friendships do
+    member do
+      put :accept
+     end
+  end
 
   # You can have the root of your site routed with "root"
   root 'markers#index'

@@ -4,6 +4,38 @@ class UserFriendshipsControllerTest < ActionController::TestCase
   # test "the truth" do
   #   assert true
   # end
+  context "#index" do
+    context "when not logged in" do
+      should "redirect to the login page" do
+        get :index
+        assert_response :redirect
+      end
+    end
+
+    context "when logged in " do
+      setup do
+        @friendship1 = create(:pending_user_friendship, user: users(:kumar), friend: create(:user, first_name: 'Pending', last_name: 'Friend'))
+        @friendship2 = create(:accepted_user_friendship, user: users(:kumar), friend: create(:user, first_name: 'Active', last_name: 'Friend'))
+
+        sign_in users(:kumar)
+        get :index
+      end
+
+
+      should "get the index page without errors" do
+        assert_response :success
+      end
+
+      should "assign user friendship to instance variables" do
+        assert assigns(:user_friendships)
+      end
+
+      should "show friends names once we get the page" do
+        assert_match /Pending/, response.body
+        assert_match /Active/, response.body
+      end
+    end
+  end
 
   context "/new" do
   	context "when not logged in" do
@@ -105,7 +137,7 @@ class UserFriendshipsControllerTest < ActionController::TestCase
 	  		end
 
 	  		should "create a friendship" do
-	  			assert users(:kumar).friends.include?(users(:saswati))
+	  			assert users(:kumar).pending_friends.include?(users(:saswati))
 	  		end
 
 
@@ -118,5 +150,64 @@ class UserFriendshipsControllerTest < ActionController::TestCase
 
   	end
   end
+
+  context "#accept" do
+    context "when not logged in" do
+      should "redirect to login page" do
+        put :accept, id: 1
+        assert_response :redirect
+        assert_redirected_to new_user_session_path
+      end
+    end
+    context "when logged in" do
+      setup do
+        @user_friendship = create(:pending_user_friendship, user: users(:kumar))
+        sign_in users(:kumar)
+        put :accept, id: @user_friendship
+        @user_friendship.reload
+      end
+
+      should "assign a user_friendship" do
+        assert assigns(:user_friendship)
+        assert_equal @user_friendship, assigns(:user_friendship)
+      end
+
+      should "update the state to accepted" do
+        assert_equal 'accepted', @user_friendship.state
+      end
+    end
+  end
+
+  context "#edit" do
+    context "when not logged in" do
+      should "redirect to login page" do
+        get :edit, id: 1
+        assert_response :redirect
+        assert_redirected_to new_user_session_path
+      end
+    end
+
+    context "when logged in" do
+      setup do
+        @user_friendship = create(:pending_user_friendship, user: users(:kumar))
+        sign_in users(:kumar)
+        get :edit, id: @user_friendship
+      end
+
+      should "get the edit page and return success" do
+        assert_response :success
+      end
+
+      should "assign to user_friendship " do
+        assert assigns(:user_friendship)
+      end
+
+      should "assign to frined" do
+        assert assigns(:friend)
+      end
+    end
+  end
+
+
 
 end

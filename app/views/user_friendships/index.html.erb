@@ -1,0 +1,6 @@
+<h3>Friends</h3>
+<% @user_friendships.each do |friendship| %>
+	<%= friendship.friend.first_name %><br />
+	<p>Friendship is <%= friendship.state %>.</p>
+	<%= link_to "Delete Request!", edit_user_friendship_path(friendship) %>
+<% end %>
